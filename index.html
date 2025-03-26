@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karthik Shivashankar - AI/SE Researcher Portfolio</title>
+
+    <style>
+        /* Basic Reset & Defaults */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+
+        /* --- Theme Variables --- */
+        :root { /* Default: Professional Dark Theme */
+            --bg-color: #1e1e1e; --bg-secondary-color: #2a2a2a; --text-color: #e2e2e2;
+            --text-muted-color: #9e9e9e; --heading-color: #ffffff; --primary-color: #4db6ac; /* Teal */
+            --secondary-color: #80cbc4; --link-color: var(--primary-color); --link-hover-color: var(--secondary-color);
+            --border-color: #424242; --header-bg: #242424; --shadow-color: rgba(0, 0, 0, 0.6);
+            --skill-bg-color: #333333; --skill-border-color: var(--border-color);
+            --button-bg: var(--primary-color); --button-text: #111; --footer-bg-color: #1a1a1a;
+        }
+        body.light-theme { /* Light Theme Overrides */
+            --bg-color: #f8f9fa; --bg-secondary-color: #ffffff; --text-color: #343a40;
+            --text-muted-color: #6c757d; --heading-color: #2c3e50; --primary-color: #007bff;
+            --secondary-color: #17a2b8; --link-color: var(--primary-color); --link-hover-color: #0056b3;
+            --border-color: #dee2e6; --header-bg: #ffffff; --shadow-color: rgba(0, 0, 0, 0.075);
+            --skill-bg-color: #e9ecef; --skill-border-color: var(--border-color);
+            --button-bg: var(--primary-color); --button-text: #ffffff; --footer-bg-color: #e9ecef;
+        }
+
+        /* --- Base Styles --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            line-height: 1.6; color: var(--text-color); background-color: var(--bg-color);
+            padding-top: 48px; /* FURTHER Reduced padding for shorter header */
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .container { max-width: 960px; margin: 2rem auto; padding: 0 1.5rem; }
+        h2 { font-size: 1.8rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; margin-top: 2.5rem; color: var(--heading-color); font-weight: 600; transition: color 0.3s ease, border-color 0.3s ease;}
+        h3 { font-size: 1.3rem; color: var(--heading-color); font-weight: 500; margin-bottom: 1rem; transition: color 0.3s ease;}
+        h4.about-name { font-size: 1.5rem; font-weight: 500; color: var(--heading-color); margin-bottom: 0.25rem; }
+        a { color: var(--link-color); text-decoration: none; transition: color 0.2s ease; }
+        a:hover { text-decoration: underline; color: var(--link-hover-color); }
+
+        /* --- Header & Navigation (Ultra Compact) --- */
+        header#main-header {
+            background: var(--header-bg); 
+            padding: 0.5rem 0;
+            text-align: center; 
+            position: fixed; 
+            width: 100%; 
+            top: 0; 
+            left: 0; 
+            z-index: 1000;
+            box-shadow: 0 2px 4px var(--shadow-color);
+            border-bottom: 1px solid var(--border-color); 
+            transition: all 0.3s ease;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden; /* Important for neural network effect */
+        }
+
+        /* Neural Network Background Animation */
+        .neural-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15; /* Increased opacity */
+            pointer-events: none;
+            z-index: -1;
+            background: linear-gradient(45deg, 
+                rgba(77, 182, 172, 0.1),
+                rgba(128, 203, 196, 0.1)
+            );
+        }
+
+        .neural-node {
+            position: absolute;
+            width: 3px; /* Slightly larger */
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 5px var(--primary-color);
+        }
+
+        .neural-connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            opacity: 0.4;
+            animation: glow 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.5); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        @keyframes glow {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.3; }
+        }
+
+        nav#main-nav {
+            width: 100%;
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        nav#main-nav ul {
+            list-style: none; 
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; 
+            padding: 0;
+            margin: 0;
+            gap: 0.5rem;
+        }
+
+        nav#main-nav li {
+            margin: 0;
+            position: relative;
+        }
+
+        nav#main-nav a {
+            color: var(--text-color); 
+            font-weight: 500;
+            padding: 0.3rem 0.6rem;
+            font-size: 0.95rem;
+            border-radius: 4px; 
+            transition: all 0.2s ease; 
+            display: inline-block; 
+            line-height: 1.3;
+            position: relative;
+            white-space: nowrap;
+        }
+
+        /* Fun hover effects for nav links */
+        nav#main-nav a:hover, 
+        nav#main-nav a.active {
+            background-color: var(--primary-color); 
+            color: var(--button-text, #fff); 
+            text-decoration: none;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        /* Matrix-like rain effect for active nav items */
+        nav#main-nav a.active::before {
+            content: '01';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            font-family: monospace;
+            font-size: 0.6rem;
+            color: var(--primary-color);
+            opacity: 0.7;
+            animation: matrix-rain 1s linear infinite;
+            text-shadow: 0 0 5px var(--primary-color);
+        }
+
+        @keyframes matrix-rain {
+            0% { transform: translateY(-10px); opacity: 0.7; }
+            100% { transform: translateY(10px); opacity: 0; }
+        }
+
+        /* --- Theme Toggle Button --- */
+        #theme-toggle {
+            position: absolute; 
+            top: 50%; 
+            right: 15px;
+            transform: translateY(-50%);
+            background-color: var(--button-bg); 
+            color: var(--button-text); 
+            border: none;
+            padding: 4px 10px;
+            border-radius: 12px;
+            cursor: pointer; 
+            font-size: 0.75rem;
+            font-weight: bold; 
+            box-shadow: 0 1px 2px var(--shadow-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        #theme-toggle:hover {
+            transform: translateY(-50%) scale(1.05);
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        /* Adjust body padding for larger header */
+        body {
+            padding-top: 48px;
+        }
+
+        /* Add AI/ML-themed loading animation */
+        .ai-loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                var(--primary-color) 0%,
+                var(--secondary-color) 50%,
+                var(--primary-color) 100%
+            );
+            background-size: 200% 100%;
+            animation: gradient-shift 2s linear infinite;
+            z-index: 1002;
+            box-shadow: 0 0 10px var(--primary-color);
+        }
+
+        @keyframes gradient-shift {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+
+        /* --- Sections & Content --- */
+        section {
+            background-color: var(--bg-secondary-color); margin-bottom: 2.5rem; padding: 2rem;
+            border-radius: 6px; box-shadow: 0 1px 3px var(--shadow-color); border: 1px solid var(--border-color);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        #about { background: none; border: none; box-shadow: none; padding: 1rem 0 1.5rem 0; margin-bottom: 1rem; text-align: center; }
+        #about p { color: var(--text-muted-color); font-size: 1.1rem; }
+
+        /* Item Lists */
+        ul.item-list { list-style: none; padding-left: 0; }
+        ul.item-list li { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 1px solid var(--border-color); transition: border-color 0.3s ease;}
+        ul.item-list li:last-child { border-bottom: none; margin-bottom: 0; }
+        ul.item-list h3 { margin-bottom: 0.5rem; }
+        ul.item-list p { margin-bottom: 0.75rem; }
+        .meta-info { font-size: 0.9rem; color: var(--text-muted-color); margin-bottom: 0.75rem; transition: color 0.3s ease; }
+        .links a { margin-right: 1.25rem; font-weight: 500; }
+
+        /* Skills List */
+        #skills ul { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem;}
+        #skills li {
+            background-color: var(--skill-bg-color); border: 1px solid var(--skill-border-color);
+            padding: 0.5rem 1rem; margin-bottom: 0; border-radius: 15px; font-size: 0.9rem;
+            transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+        }
+        #skills li:hover { background-color: var(--secondary-color); color: #ffffff; border-color: var(--secondary-color); }
+        #skills li strong { font-weight: 500; }
+
+        /* --- Footer --- */
+        footer#main-footer {
+            text-align: center; margin-top: 4rem; padding: 2.5rem 1.5rem; background-color: var(--footer-bg-color);
+            color: var(--text-muted-color); font-size: 0.9rem; border-top: 1px solid var(--border-color);
+             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+         footer#main-footer h2 { font-size: 1.5rem; color: var(--heading-color); border-bottom: none; margin-bottom: 1.5rem; }
+        footer#main-footer .social-links a { margin: 0 1rem; font-size: 1rem; color: var(--text-color); display: inline-block; transition: color 0.2s ease; font-weight: 500; }
+        footer#main-footer .social-links a:hover { color: var(--primary-color); text-decoration: none; }
+        .footer-status {
+            position: relative;
+            z-index: 1;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem auto;
+            max-width: 600px;
+        }
+        .footer-status span { display: block; margin-bottom: 0.3rem; }
+        #latest-commit a { font-family: monospace; color: var(--text-muted-color); text-decoration: none; border-bottom: 1px dashed var(--text-muted-color); transition: color 0.2s ease, border-color 0.2s ease; }
+        #latest-commit a:hover { color: var(--link-hover-color); border-bottom-color: var(--link-hover-color); }
+        #footer-info { margin-top: 1.5rem; line-height: 1.5; }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            h2 { font-size: 1.7rem; } 
+            h3 { font-size: 1.2rem; }
+            body { padding-top: 48px; } /* Adjust for shorter header */
+            nav#main-nav ul { 
+                padding: 0.2rem 0; 
+                gap: 0.3rem; /* Add gap between items */
+            }
+            nav#main-nav li { margin: 0 0.4rem; }
+            nav#main-nav a { 
+                padding: 0.3rem 0.5rem; 
+                font-size: 0.9rem; 
+            }
+            #theme-toggle { 
+                padding: 4px 8px; 
+                font-size: 0.7rem; 
+                right: 10px;
+            }
+        }
+         @media (max-width: 480px) {
+            .container { 
+                padding: 0 1rem; 
+                margin: 1.5rem auto; 
+            }
+            section { padding: 1.5rem; }
+            body { padding-top: 48px; }
+            footer#main-footer .social-links a { 
+                margin: 0 0.5rem 0.5rem 0.5rem; 
+                display: block; 
+            }
+            nav#main-nav li { margin: 0 0.2rem; }
+            nav#main-nav a { 
+                padding: 0.3rem 0.4rem; 
+                font-size: 0.85rem;
+            }
+            #theme-toggle { 
+                padding: 4px 8px; 
+                font-size: 0.65rem; 
+                right: 8px;
+            }
+         }
+
+        /* Add a fun scroll progress indicator */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            transform-origin: 0%;
+            transform: scaleX(0);
+            transition: transform 0.1s ease;
+            z-index: 1001;
+        }
+
+        /* AI Background Effects */
+        .ai-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.05;
+            background: 
+                linear-gradient(45deg, 
+                    rgba(77, 182, 172, 0.1),
+                    rgba(128, 203, 196, 0.1)
+                );
+        }
+
+        .neural-network {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.15;
+        }
+
+        .neural-node {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .neural-connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            transform-origin: left center;
+            opacity: 0.3;
+            transition: all 0.3s ease;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.5); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 0.5; }
+        }
+
+        @keyframes glow {
+            0% { opacity: 0.3; }
+            50% { opacity: 0.6; }
+            100% { opacity: 0.3; }
+        }
+
+        .matrix-rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.03;
+            font-family: monospace;
+            font-size: 14px;
+            line-height: 1;
+            color: var(--primary-color);
+        }
+
+        .neural-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.03;
+            background-image: 
+                linear-gradient(var(--primary-color) 1px, transparent 1px),
+                linear-gradient(90deg, var(--primary-color) 1px, transparent 1px);
+            background-size: 30px 30px;
+            animation: grid-pulse 4s infinite;
+        }
+
+        @keyframes grid-pulse {
+            0% { opacity: 0.03; }
+            50% { opacity: 0.05; }
+            100% { opacity: 0.03; }
+        }
+
+        /* AI Footer Effects */
+        .footer-ai-container {
+            position: relative;
+            overflow: hidden;
+            padding: 2rem 0;
+            background: linear-gradient(to bottom, 
+                var(--footer-bg-color),
+                rgba(77, 182, 172, 0.1)
+            );
+        }
+
+        .ai-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .ai-particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            animation: float 3s infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) translateX(0); opacity: 0.3; }
+            50% { transform: translateY(-20px) translateX(10px); opacity: 0.6; }
+            100% { transform: translateY(0) translateX(0); opacity: 0.3; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header">
+        <button id="theme-toggle" title="Switch Theme">☀️ Light</button>
+
+        <nav id="main-nav" class="container">
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#publications">Publications</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#software">Software</a></li>
+                <li><a href="#datasets">Datasets</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="assets/cv.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <section id="about">
+            <h4 class="about-name">Karthik Shivashankar</h4>
+            <p>PhD Candidate at the University of Oslo, focusing on AI & Software Engineering.</p>
+        </section>
+
+        <section id="publications">
+            <h2>Publications</h2>
+            <ul class="item-list">
+                 <li>
+                    <h3>PyExamine A Comprehensive, UnOpinionated Smell Detection Tool for Python</h3>
+                    <p class="meta-info">Shivashankar, K., & Martini, A. (2025). <em>Proceedings of the 22nd Mining Software Repositories (MSR)</em>.</p>
+                </li>
+                <li>
+                    <h3>MLScent: A tool for Anti-pattern detection in ML projects</h3>
+                    <p class="meta-info">Shivashankar, K., & Martini, A. (2025). <em>Proceedings of the 4th International Conference on AI Engineering (CAIN)</em>.</p>
+                </li>
+                 <li>
+                    <h3>Towards Enhancing Task Prioritization in Software Development Through Transformer-Based Issues Classification</h3>
+                    <p class="meta-info">Haugerud, KM, Shivashankar, K., & Martini, A. (2025). <em>International Conference on Product-Focused Software Process Improvement (PROFES)</em>.</p>
+                </li>
+                 <li>
+                    <h3>AI in healthcare education: a systematic review of applications in teaching and learning</h3>
+                    <p class="meta-info">Bakthavatchaalam, V., & Sivasankar, K. (2025). <em>Transforming Healthcare Sector Through Artificial Intelligence and Environmental Sustainability</em>, 253-274.</p>
+                </li>
+                 <li>
+                    <h3>Beacon-Td: Classifying Technical Debt and its Types Across Diverse Software Projects Issues Using Transformers</h3>
+                    <p class="meta-info">Shivashankar, K., Orucevic, M., Kruke, MM, & Martini, A. (2024). <em>SSRN 4945055</em>.</p>
+                     <div class="links"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4945055" target="_blank" rel="noopener noreferrer">Paper (SSRN)</a></div>
+                </li>
+                <li>
+                    <h3>Better Python Programming for all: With the focus on Maintainability</h3>
+                    <p class="meta-info">Shivashankar, K., & Martini, A. (2024). <em>arXiv preprint arXiv:2408.09134</em>.</p>
+                     <div class="links"><a href="https://arxiv.org/abs/2408.09134" target="_blank" rel="noopener noreferrer">Paper (arXiv)</a></div>
+                </li>
+                 <li>
+                    <h3>Education policies through data-driven decision-making: Accelerating inclusive education for people with disabilities</h3>
+                    <p class="meta-info">Shivashankar, K., & Bakthavatchaalam, V. (2024). <em>Artificial Intelligence Enabled Management</em>, 15-32.</p>
+                </li>
+                 <li>
+                    <h3>Technical debt classification in issue trackers using natural language processing based on transformers</h3>
+                    <p class="meta-info">Skryseth, D., Shivashankar, K., Pilán, I., & Martini, A. (2023). <em>ACM/IEEE International Conference on Technical Debt (TechDebt)</em>, 92-101.</p>
+                </li>
+                 <li>
+                    <h3>Maintainability challenges in ML: A systematic literature review</h3>
+                    <p class="meta-info">Shivashankar, K., & Martini, A. (2022). <em>48th Euromicro Conference on Software Engineering and Advanced Applications (SEAA)</em>.</p>
+                </li>
+                 <li>
+                    <h3>Smart Municipal Governance System Using Confluence of Technologies in a Developing Country Scenario</h3>
+                    <p class="meta-info">Shivashankar, K., & Bakthavatchaalam, V. (2021). <em>14th International Conference on Theory and Practice of Electronic Governance (ICEGOV)</em>, 535-537.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="projects">
+            <h2>Research Projects</h2>
+             <ul class="item-list">
+                 <li>
+                    <h3>AI for Software Maintainability</h3>
+                    <p>Investigating the challenges and solutions for maintaining ML-based systems, including technical debt identification and smell detection.</p>
+                </li>
+                <li>
+                    <h3>NLP for Technical Debt Management</h3>
+                    <p>Utilizing transformer-based models and natural language processing to classify and manage technical debt found in software issue trackers.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section id="software">
+            <h2>Software Packages</h2>
+            <ul class="item-list">
+                 <li>
+                    <h3>PyExamine / Python Smells Detector</h3>
+                    <p>A comprehensive tool for detecting code smells focusing on maintainability in Python projects.</p>
+                    <div class="links"><a href="https://github.com/KarthikShivasankar/python_smells_detector" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+                </li>
+                <li>
+                    <h3>MLScent / ML Smells Detector</h3>
+                    <p>A tool designed to detect anti-patterns and "smells" specific to Machine Learning projects.</p>
+                     <div class="links"><a href="https://github.com/KarthikShivasankar/ml_smells_detector" target="_blank" rel="noopener noreferrer">GitHub</a></div>
+                </li>
+                 <li>
+                    <h3>Beacon-TD</h3>
+                    <p>Transformer-based tool for classifying Technical Debt types from software project issues.</p>
+                     <div class="links"><a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4945055" target="_blank" rel="noopener noreferrer">Paper (SSRN)</a></div>
+                </li>
+            </ul>
+        </section>
+
+         <section id="datasets">
+            <h2>Datasets</h2>
+            <ul class="item-list">
+                 <li>
+                    <h3>Technical Debt Binary Classification Dataset</h3>
+                    <p>A dataset for binary classification of technical debt presence in issue reports.</p>
+                    <div class="links"><a href="https://huggingface.co/datasets/karths/binary-10IQR-TD" target="_blank" rel="noopener noreferrer">Hugging Face</a></div>
+                </li>
+                 <li>
+                    <h3>Technical Debt Multi-Class Classification Dataset</h3>
+                    <p>A dataset for multi-class classification of software issues related to different quality attributes ('Ilities').</p>
+                    <div class="links"><a href="https://huggingface.co/datasets/karths/Ilities-without-keywords-unique-all-filter" target="_blank" rel="noopener noreferrer">Hugging Face</a></div>
+                </li>
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2>Technical Skills</h2>
+            <ul>
+                <li>Python</li><li>PyTorch</li><li>TensorFlow</li><li>scikit-learn</li><li>NLP</li>
+                <li>Transformers</li><li>Machine Learning</li><li>Deep Learning</li>
+                <li>Software Engineering</li><li>Software Maintainability</li><li>Technical Debt</li>
+                <li>Code Smells</li><li>Program Analysis</li>
+                <li>Java</li><li>Git</li><li>Docker</li><li>CI/CD</li>
+                <li>SQL</li><li>Empirical Software Engineering</li><li>LaTeX</li>
+            </ul>
+        </section>
+
+        </main>
+
+    <footer id="main-footer">
+         <h2 id="contact">Contact</h2>
+         <p>Email: <a href="mailto:[karthik13sankar@outlook.com]">[karthik13sankar@outlook.com]</a></p> <p style="margin-top: 1rem;">Find me online:</p>
+         <div class="social-links">
+             <a href="https://github.com/KarthikShivasankar" target="_blank" rel="noopener noreferrer" title="GitHub">GitHub</a> |
+             <a href="https://www.linkedin.com/in/karthiksankarprofile" target="_blank" rel="noopener noreferrer" title="LinkedIn">LinkedIn</a> |
+             <a href="https://orcid.org/0009-0001-8508-2978" target="_blank" rel="noopener noreferrer" title="ORCID">ORCID</a>
+         </div>
+
+         <div class="footer-status">
+             <span id="training-status">Initializing...</span>
+             <span id="build-status">Idle</span>
+             <span id="dataset-version">Dataset Version: Loading...</span>
+             <span id="latest-commit"></span>
+         </div>
+
+         <p id="footer-info">
+             &copy; <span id="current-year"></span> Karthik Shivashankar. All rights reserved.
+             <br>Based in Oslo, Norway (as of March 26, 2025).
+         </p>
+
+    </footer>
+
+    <script>
+        function ready(fn) { if (document.readyState !== 'loading'){ fn(); } else { document.addEventListener('DOMContentLoaded', fn); } }
+
+        ready(function() {
+
+            // --- 1. Dynamic Year ---
+            const yearSpan = document.getElementById('current-year');
+            if (yearSpan) { yearSpan.textContent = new Date().getFullYear(); }
+
+            // --- 2. Theme Switching ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const savedTheme = localStorage.getItem('theme');
+            const defaultTheme = (savedTheme === 'light' || (!savedTheme && !prefersDark)) ? 'light' : 'dark';
+
+            function applyTheme(theme) {
+                if (theme === 'light') {
+                    body.classList.add('light-theme');
+                    if (themeToggle) { themeToggle.textContent = '🌙 Dark'; themeToggle.title = 'Switch to Dark Mode'; }
+                } else {
+                    body.classList.remove('light-theme');
+                    if (themeToggle) { themeToggle.textContent = '☀️ Light'; themeToggle.title = 'Switch to Light Mode'; }
+                }
+            }
+            applyTheme(defaultTheme); // Apply theme on load
+
+            if (themeToggle) {
+                themeToggle.addEventListener('click', () => {
+                    let newTheme = body.classList.contains('light-theme') ? 'dark' : 'light';
+                    applyTheme(newTheme);
+                    localStorage.setItem('theme', newTheme);
+                });
+            }
+
+            // --- 3. Training Status Bar ---
+            const statusBar = document.getElementById('training-status');
+            if (statusBar) {
+                let epoch = 1 + Math.floor(Math.random() * 10);
+                let loss = 0.01 + Math.random() * 0.05;
+                let accuracy = 0.995 + Math.random() * 0.0049;
+
+                function updateNeuralNetwork(loss, accuracy) {
+                    // Update node sizes and glow based on loss
+                    nodes.forEach(node => {
+                        const scale = 1 + (1 - loss) * 0.5;
+                        node.element.style.transform = `scale(${scale})`;
+                        node.element.style.boxShadow = `0 0 ${8 + (1 - loss) * 8}px var(--primary-color)`;
+                    });
+
+                    // Update connection opacity based on accuracy
+                    connections.forEach(conn => {
+                        const opacity = 0.3 + accuracy * 0.4;
+                        conn.element.style.opacity = opacity;
+                    });
+
+                    // Animate connections
+                    connections.forEach(conn => {
+                        const dx = conn.to.x - conn.from.x;
+                        const dy = conn.to.y - conn.from.y;
+                        const length = Math.sqrt(dx * dx + dy * dy);
+                        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+                        conn.element.style.width = `${length}%`;
+                        conn.element.style.left = `${conn.from.x}%`;
+                        conn.element.style.top = `${conn.from.y}%`;
+                        conn.element.style.transform = `rotate(${angle}deg)`;
+                    });
+                }
+
+                function updateStatus() {
+                    loss = Math.max(0.0001, loss * (0.95 + Math.random() * 0.04));
+                    accuracy = Math.min(0.9999, accuracy + Math.random() * 0.0001);
+                    if (Math.random() < 0.2) epoch++;
+                    if (statusBar) {
+                        statusBar.textContent = `Training Portfolio Embedding | Epoch: ${epoch} | Loss: ${loss.toFixed(4)} | Accuracy: ${accuracy.toFixed(4)}`;
+                        updateNeuralNetwork(loss, accuracy);
+                    }
+                    setTimeout(updateStatus, 2000 + Math.random() * 1500);
+                }
+                setTimeout(updateStatus, 1500);
+            }
+
+            // --- 4. Fake Build/Lint/Test Status ---
+            const buildStatusSpan = document.getElementById('build-status');
+            if (buildStatusSpan) {
+                const statuses = ["Compiling project...", "Compiling project... OK", "Running linter...", "Running linter... 0 Issues", "Running tests...", "Running tests... 11/11 Passed", "Idle"];
+                let statusIndex = 0;
+                function updateBuildStatus() {
+                    statusIndex = (statusIndex + 1) % statuses.length;
+                    if (buildStatusSpan) { buildStatusSpan.textContent = `Build Status: ${statuses[statusIndex]}`; } else { return; }
+                    let delay = (statuses[statusIndex] === "Idle") ? (8000 + Math.random() * 5000) : (1500 + Math.random() * 1000);
+                    setTimeout(updateBuildStatus, delay);
+                }
+                setTimeout(updateBuildStatus, 4000);
+            }
+
+            // --- 5. Add scroll progress indicator
+            const progressBar = document.createElement('div');
+            progressBar.className = 'scroll-progress';
+            document.body.appendChild(progressBar);
+
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = (winScroll / height) * 100;
+                progressBar.style.transform = `scaleX(${scrolled / 100})`;
+            });
+
+            // --- 6. Add active state to current section in navigation
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav#main-nav a[href^="#"]');
+
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= sectionTop - 60) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').slice(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+
+            // --- 7. Nerdy Console Log Message ---
+            console.log(`Portfolio Integrity Check: PASSED. AI Assistant ready. Current time: ${new Date().toLocaleTimeString()}. Location: Oslo, Norway`);
+            console.log("View source for a commented code snippet easter egg!");
+
+            // --- 8. Smooth Scroll Offset Adjustment ---
+            document.querySelectorAll('nav#main-nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#') && href.length > 1) {
+                        try {
+                             const targetElement = document.querySelector(href);
+                             if (targetElement) {
+                                e.preventDefault();
+                                const header = document.getElementById('main-header'); const headerOffset = header ? header.offsetHeight : 40; // Use new fallback height
+                                const elementPosition = targetElement.getBoundingClientRect().top; const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                                window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                             }
+                        } catch (error) { console.error(`Error finding smooth scroll target: ${href}`, error); }
+                    }
+                });
+            });
+
+            // Create AI background effects
+            const background = document.createElement('div');
+            background.className = 'ai-background';
+            document.body.appendChild(background);
+
+            // Create neural network background
+            const neuralNetwork = document.createElement('div');
+            neuralNetwork.className = 'neural-network';
+            document.body.appendChild(neuralNetwork);
+
+            // Create nodes and connections
+            const numNodes = 30;
+            const nodes = [];
+            const connections = [];
+
+            // Create nodes
+            for (let i = 0; i < numNodes; i++) {
+                const node = document.createElement('div');
+                node.className = 'neural-node';
+                node.style.left = `${Math.random() * 100}%`;
+                node.style.top = `${Math.random() * 100}%`;
+                neuralNetwork.appendChild(node);
+                nodes.push({
+                    element: node,
+                    x: parseFloat(node.style.left),
+                    y: parseFloat(node.style.top)
+                });
+            }
+
+            // Create connections between nodes
+            for (let i = 0; i < nodes.length; i++) {
+                for (let j = i + 1; j < nodes.length; j++) {
+                    if (Math.random() < 0.3) { // 30% chance of connection
+                        const connection = document.createElement('div');
+                        connection.className = 'neural-connection';
+                        neuralNetwork.appendChild(connection);
+                        connections.push({
+                            element: connection,
+                            from: nodes[i],
+                            to: nodes[j]
+                        });
+                    }
+                }
+            }
+
+            // Update connections and nodes based on training status
+            function updateNeuralNetwork(loss, accuracy) {
+                // Update node sizes and glow based on loss
+                nodes.forEach(node => {
+                    const scale = 1 + (1 - loss) * 0.5;
+                    node.element.style.transform = `scale(${scale})`;
+                    node.element.style.boxShadow = `0 0 ${8 + (1 - loss) * 8}px var(--primary-color)`;
+                });
+
+                // Update connection opacity based on accuracy
+                connections.forEach(conn => {
+                    const opacity = 0.3 + accuracy * 0.4;
+                    conn.element.style.opacity = opacity;
+                });
+
+                // Animate connections
+                connections.forEach(conn => {
+                    const dx = conn.to.x - conn.from.x;
+                    const dy = conn.to.y - conn.from.y;
+                    const length = Math.sqrt(dx * dx + dy * dy);
+                    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+
+                    conn.element.style.width = `${length}%`;
+                    conn.element.style.left = `${conn.from.x}%`;
+                    conn.element.style.top = `${conn.from.y}%`;
+                    conn.element.style.transform = `rotate(${angle}deg)`;
+                });
+            }
+
+            // Create Matrix rain effect
+            const matrixRain = document.createElement('div');
+            matrixRain.className = 'matrix-rain';
+            document.body.appendChild(matrixRain);
+
+            // Matrix rain animation
+            const matrixChars = '01';
+            const matrixDrops = 50;
+            const matrixSpeed = 30;
+
+            for (let i = 0; i < matrixDrops; i++) {
+                const drop = document.createElement('div');
+                drop.style.position = 'absolute';
+                drop.style.left = `${Math.random() * 100}%`;
+                drop.style.top = `${Math.random() * 100}%`;
+                drop.style.animation = `matrix-fall ${matrixSpeed + Math.random() * 20}s linear infinite`;
+                drop.style.animationDelay = `${Math.random() * 5}s`;
+                drop.textContent = matrixChars[Math.floor(Math.random() * matrixChars.length)];
+                matrixRain.appendChild(drop);
+            }
+
+            // Add keyframe for matrix rain
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes matrix-fall {
+                    0% { transform: translateY(-100%); opacity: 0; }
+                    10% { opacity: 0.5; }
+                    90% { opacity: 0.5; }
+                    100% { transform: translateY(100vh); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Create AI particles in footer
+            const footer = document.querySelector('footer#main-footer');
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'ai-particles';
+            footer.appendChild(particlesContainer);
+
+            // Add particles
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'ai-particle';
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 3}s`;
+                particlesContainer.appendChild(particle);
+            }
+
+            // Add interactive hover effect to skills
+            const skills = document.querySelectorAll('#skills li');
+            skills.forEach(skill => {
+                skill.addEventListener('mouseover', () => {
+                    const particle = document.createElement('div');
+                    particle.className = 'ai-particle';
+                    particle.style.left = `${Math.random() * 100}%`;
+                    particle.style.top = `${Math.random() * 100}%`;
+                    particlesContainer.appendChild(particle);
+                    
+                    setTimeout(() => particle.remove(), 3000);
+                });
+            });
+
+        }); // End of ready()
+    </script>
+
+</body>
+</html>
