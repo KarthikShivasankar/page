@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karthik Shivashankar - Curriculum Vitae</title>
+    <title>Karthik Shivashankar - AI Researcher</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
             font-family: 'Inter', sans-serif;
         }
-        /* Simple transition for theme changes */
+        /* Smooth theme transition */
         body, .bg-gray-100, .bg-gray-900, .bg-gray-200, .bg-gray-800, .text-gray-900, .text-gray-100, .text-gray-600, .text-gray-300, .border-gray-300, .border-gray-700 {
             transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
@@ -37,141 +39,186 @@
         }
     </script>
 </head>
-<body class="bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased">
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased selection:bg-indigo-500 selection:text-white">
 
     <!-- Theme Toggle Button -->
-    <button onclick="toggleTheme()" class="fixed top-4 right-4 z-50 p-2 rounded-full bg-gray-200 dark:bg-gray-800 text-gray-800 dark:text-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 dark:focus:ring-offset-gray-900 focus:ring-indigo-500">
-        <svg id="theme-icon-light" class="h-6 w-6 hidden dark:block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <button onclick="toggleTheme()" class="fixed top-6 right-6 z-50 p-2.5 rounded-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-lg focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
+        <svg id="theme-icon-light" class="h-5 w-5 hidden dark:block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
         </svg>
-        <svg id="theme-icon-dark" class="h-6 w-6 block dark:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <svg id="theme-icon-dark" class="h-5 w-5 block dark:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
         </svg>
     </button>
 
-    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
         
         <!-- Header Section -->
-        <header class="text-center mb-12">
-            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white">Karthik Shivashankar</h1>
-            <p class="mt-3 text-lg text-gray-600 dark:text-gray-300">AI and Software Engineering Researcher</p>
-            <div class="mt-6 flex justify-center items-center space-x-5">
-                <a href="mailto:karthik13sankar@outlook.com" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+        <header class="text-center mb-16">
+            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">Karthik Shivashankar</h1>
+            <p class="text-xl text-indigo-600 dark:text-indigo-400 font-medium">AI and Software Engineering Researcher</p>
+            
+            <!-- Social Links -->
+            <div class="mt-8 flex flex-wrap justify-center gap-6">
+                <a href="mailto:karthik13sankar@outlook.com" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" aria-label="Email">
+                    <i class="fa-solid fa-envelope text-xl"></i>
+                    <span class="hidden sm:inline group-hover:underline">Email</span>
                 </a>
-                <a href="https://www.linkedin.com/in/karthiksankarprofile/" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"></path></svg>
+                <a href="https://www.linkedin.com/in/karthiksankarprofile/" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin text-xl"></i>
+                    <span class="hidden sm:inline group-hover:underline">LinkedIn</span>
                 </a>
-                <a href="https://github.com/KarthikShivasankar" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+                <a href="https://github.com/KarthikShivasankar" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                    <i class="fa-brands fa-github text-xl"></i>
+                    <span class="hidden sm:inline group-hover:underline">GitHub</span>
                 </a>
-                <a href="https://scholar.google.com/citations?user=OrRAiLoAAAAJ&hl=en" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer">
-                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M5.242 13.769L0 9.5L12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9 12 9s-5.548 2.249-6.758 4.769zM12 10a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm0 2a6 6 0 1 1 0 12 6 6 0 0 1 0-12zm0 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 2a2 2 0 1 1 0 4 2 2 0 0 1 0-4z"></path></svg>
+                <a href="https://scholar.google.com/citations?user=OrRAiLoAAAAJ&hl=en" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
+                    <i class="fa-solid fa-graduation-cap text-xl"></i>
+                    <span class="hidden sm:inline group-hover:underline">Scholar</span>
                 </a>
-                 <a href="https://huggingface.co/karths" class="text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer">
-                    <span class="text-2xl">🤗</span>
+                <a href="https://huggingface.co/karths" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face">
+                    <span class="text-xl">🤗</span>
+                    <span class="hidden sm:inline group-hover:underline">Hugging Face</span>
                 </a>
             </div>
         </header>
 
         <!-- Main Content -->
-        <main class="space-y-14">
+        <main class="space-y-16">
+            
             <!-- Summary Section -->
-            <section>
-                <h2 class="text-2xl font-bold border-b-2 border-gray-300 dark:border-gray-700 pb-2 mb-4">Summary</h2>
-                <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
-                    My research bridges Artificial Intelligence and Software Engineering, focusing on the dual challenge of technical debt: I apply machine learning to automatically identify and manage technical debt, while also developing tools to analyze and mitigate debt <em>within</em> ML systems. My primary contributions include BEACon-TD, a transformer-based NLP framework for classifying technical debt from developer communications, and two static analyzers: MLScent, which detects 76 ML-specific anti-patterns, and PyExamine, a multi-level detector for 49 Python code smells. My work translates this research into open-source tools that provide tangible solutions to critical challenges in the software development lifecycle.
+            <section class="prose dark:prose-invert max-w-none">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-5">Research Profile</h2>
+                <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
+                    I am an AI Researcher specializing in the convergence of <strong>Machine Learning (ML)</strong>, <strong>Natural Language Processing (NLP)</strong>, and <strong>Software Engineering (SE)</strong>. My doctoral research focuses on managing <strong>Technical Debt</strong> in modern software systems by leveraging <strong>Transformers</strong> and <strong>Large Language Models (LLMs)</strong>. I have designed and deployed agentic workflows and static analysis tools (BEACon-TD, MLScent) that automate the identification of code smells and architectural debt. My expertise spans the full lifecycle of AI engineering, from training specialized language models to developing scalable detection frameworks for ML-specific anti-patterns.
                 </p>
             </section>
             
             <!-- Education Section -->
             <section>
-                <h2 class="text-2xl font-bold border-b-2 border-gray-300 dark:border-gray-700 pb-2 mb-6">Education</h2>
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400">Philosophiae Doctor (PhD) in Informatics</h3>
-                        <p class="font-medium">University of Oslo, Norway | Oct 2025</p>
-                        <p class="mt-2 text-gray-700 dark:text-gray-300"><strong class="font-semibold">Thesis:</strong> The Dual Role of Machine Learning in Technical Debt Management: Applying Machine Learning for Identification While Analyzing Debt within ML Systems.</p>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-8">Education</h2>
+                <div class="space-y-10">
+                    <div class="relative pl-8 border-l-2 border-indigo-200 dark:border-indigo-900">
+                        <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-gray-900"></div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Philosophiae Doctor (PhD) in Computer Science</h3>
+                        <div class="flex flex-col sm:flex-row sm:items-center text-sm text-gray-500 dark:text-gray-400 mt-1 mb-3">
+                            <span class="font-semibold text-indigo-600 dark:text-indigo-400">University of Oslo</span>
+                            <span class="hidden sm:block mx-2">•</span>
+                            <span>2021 – 2025</span>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">Thesis:</strong> The Dual Role of Machine Learning in Technical Debt Management.</p>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Developed specialized BERT-based models for classifying technical debt and created a taxonomy of 76 ML-specific anti-patterns.</p>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400">MSc in Electronics Engineering (EuroMasters, with Distinction)</h3>
-                        <p class="font-medium">University of Surrey, Guildford, UK | 2017 – 2019</p>
-                        <p class="mt-2 text-gray-700 dark:text-gray-300"><strong class="font-semibold">Dissertation (Distinction):</strong> Deep Learning for 4D Augmented Reality. Developed a compact representation of 4D video sequences using 3D Deep Learning models (VAEs) to enable efficient rendering on Mixed Reality platforms like HoloLens.</p>
+
+                    <div class="relative pl-8 border-l-2 border-indigo-200 dark:border-indigo-900">
+                        <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-gray-900"></div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">MSc in Electronics Engineering (Distinction)</h3>
+                        <div class="flex flex-col sm:flex-row sm:items-center text-sm text-gray-500 dark:text-gray-400 mt-1 mb-3">
+                            <span class="font-semibold text-indigo-600 dark:text-indigo-400">University of Surrey</span>
+                            <span class="hidden sm:block mx-2">•</span>
+                            <span>2017 – 2019</span>
+                        </div>
+                        <p class="text-gray-700 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">Dissertation:</strong> Deep Learning for 4D Video.</p>
+                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Developed compact representations of 4D video sequences using 3D Variational Autoencoders (VAEs) for Mixed Reality rendering.</p>
                     </div>
                 </div>
             </section>
 
             <!-- Research Experience Section -->
             <section>
-                <h2 class="text-2xl font-bold border-b-2 border-gray-300 dark:border-gray-700 pb-2 mb-6">Research Experience</h2>
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400">PhD Researcher</h3>
-                    <p class="font-medium">University of Oslo, Norway | 2021 – 2025</p>
-                    <p class="mt-2 text-gray-700 dark:text-gray-300">My research involved the end-to-end development of AI-driven tools to automate and enhance software quality analysis.</p>
-                    <ul class="mt-4 list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300">
-                        <li><strong class="font-semibold">Automated NLP-based Quality Analysis:</strong> Engineered BEACon-TD, a novel framework using fine-tuned transformer models to classify 13 distinct types of technical debt directly from unstructured text in issue trackers. This work was operationalized in the open-source TD-Suite framework.</li>
-                        <li><strong class="font-semibold">ML-Specific Code Quality & Maintainability:</strong> Addressed the lack of specialized quality tools for AI systems by building MLScent, a static analyzer that detects 76 unique ML-specific anti-patterns in frameworks like TensorFlow and PyTorch. This was complemented by a comprehensive systematic literature review to consolidate knowledge on maintainability in ML.</li>
-                        <li><strong class="font-semibold">Advanced Python Code Smell Detection:</strong> To overcome the limitations of existing linters, I developed PyExamine, a multi-level static analysis tool for Python that identifies 49 unique metrics covering code, structural, and architectural smells.</li>
-                        <li><strong class="font-semibold">Enhanced Code Maintainability with LLMs:</strong> Investigated the use of fine-tuned Large Language Models to proactively refactor Python code, demonstrating measurable improvements in objective maintainability metrics while preserving functionality.</li>
-                    </ul>
-                </div>
-            </section>
-            
-            <!-- Industry Experience Section -->
-            <section>
-                <h2 class="text-2xl font-bold border-b-2 border-gray-300 dark:border-gray-700 pb-2 mb-6">Industry Experience</h2>
-                <div>
-                    <h3 class="text-lg font-semibold text-indigo-600 dark:text-indigo-400">AI Engineer</h3>
-                    <p class="font-medium">Fantastec Sports Technologies, London, UK | June 2018 - Oct 2021</p>
-                    <ul class="mt-4 list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300">
-                        <li>Automated digital asset creation by architecting a computer vision pipeline using Python, OpenCV, and Dlib, significantly reducing manual production time and costs.</li>
-                        <li>Constructed a scalable data pipeline on AWS with Apache Spark and Scikit-Learn to analyze user behavior, enabling a predictive in-app asset recommendation system.</li>
-                        <li>Designed a Monte Carlo simulation in MATLAB to forecast game dynamics for a blockchain application, delivering key data that guided product strategy and feature development.</li>
-                    </ul>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-8">Research & Technical Experience</h2>
+                <div class="space-y-12">
+                    <!-- PhD Role -->
+                    <div>
+                        <div class="flex justify-between items-baseline flex-wrap mb-2">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">PhD Researcher (AI & Software Engineering)</h3>
+                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">2021 – 2025</span>
+                        </div>
+                        <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-4">University of Oslo</p>
+                        <ul class="space-y-4 text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start">
+                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
+                                <span><strong class="text-gray-900 dark:text-white">Transformer-Based Debt Classification:</strong> Engineered <strong>BEACon-TD</strong>, a novel framework utilizing fine-tuned transformer models to classify 13 distinct types of technical debt from issue trackers.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
+                                <span><strong class="text-gray-900 dark:text-white">Agentic AI for Refactoring:</strong> Investigated Agentic AI workflows using fine-tuned LLMs to proactively identify and refactor Python code, demonstrating measurable improvements in Halstead metrics.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
+                                <span><strong class="text-gray-900 dark:text-white">ML Static Analysis:</strong> Architected <strong>MLScent</strong>, a static analysis tool designed to detect 76 unique ML-specific anti-patterns in frameworks like TensorFlow and PyTorch.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
+                                <span><strong class="text-gray-900 dark:text-white">Python Quality Assurance:</strong> Developed <strong>PyExamine</strong>, a multi-level static analysis tool identifying 49 metrics for code and architectural smells, achieving 91% recall.</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Industry Role -->
+                    <div>
+                        <div class="flex justify-between items-baseline flex-wrap mb-2">
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">AI Engineer</h3>
+                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">2018 – 2021</span>
+                        </div>
+                        <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-4">Fantastec Sports Technologies</p>
+                        <ul class="space-y-4 text-gray-700 dark:text-gray-300">
+                            <li class="flex items-start">
+                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
+                                <span>Architected a computer vision pipeline using Python, OpenCV, and Dlib that automated digital asset creation, significantly reducing manual production overhead.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
+                                <span>Constructed scalable data pipelines on AWS and Databricks using Apache Spark to analyze user behavior for predictive asset recommendation.</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </section>
 
             <!-- Technical Skills Section -->
             <section>
-                <h2 class="text-2xl font-bold border-b-2 border-gray-300 dark:border-gray-700 pb-2 mb-6">Technical Skills</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-                    <div>
-                        <h3 class="font-semibold text-md mb-2">Languages</h3>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-8">Technical Skills</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h3 class="font-bold text-lg mb-4 flex items-center text-gray-900 dark:text-white">
+                            <i class="fa-solid fa-brain text-indigo-500 mr-2"></i> Core AI & ML
+                        </h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">SQL</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">MATLAB</span>
+                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">LLMs</span>
+                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">Agentic AI</span>
+                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">NLP</span>
+                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">Transformers</span>
+                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">Computer Vision</span>
+                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">Deep Learning</span>
                         </div>
                     </div>
-                    <div>
-                        <h3 class="font-semibold text-md mb-2">AI/ML Frameworks</h3>
+                    
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h3 class="font-bold text-lg mb-4 flex items-center text-gray-900 dark:text-white">
+                            <i class="fa-solid fa-code text-indigo-500 mr-2"></i> Software Engineering
+                        </h3>
                         <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">PyTorch</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">Scikit-learn</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">Hugging Face</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">Pandas</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">OpenCV</span>
+                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">Static Analysis</span>
+                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">Technical Debt</span>
+                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">Code Smells</span>
+                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">MLOps</span>
+                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">CI/CD</span>
                         </div>
                     </div>
-                    <div class="md:col-span-2">
-                        <h3 class="font-semibold text-md mb-2">Core Competencies</h3>
+
+                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
+                        <h3 class="font-bold text-lg mb-4 flex items-center text-gray-900 dark:text-white">
+                            <i class="fa-solid fa-laptop-code text-indigo-500 mr-2"></i> Stack
+                        </h3>
                         <div class="flex flex-wrap gap-2">
-                             <span class="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 text-sm font-medium px-3 py-1 rounded-full">Natural Language Processing (NLP)</span>
-                             <span class="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 text-sm font-medium px-3 py-1 rounded-full">Deep Learning</span>
-                             <span class="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 text-sm font-medium px-3 py-1 rounded-full">Static Code Analysis</span>
-                             <span class="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 text-sm font-medium px-3 py-1 rounded-full">Empirical Software Engineering</span>
-                             <span class="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 text-sm font-medium px-3 py-1 rounded-full">MLOps</span>
-                             <span class="bg-indigo-100 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-300 text-sm font-medium px-3 py-1 rounded-full">Technical Debt Management</span>
-                        </div>
-                    </div>
-                     <div>
-                        <h3 class="font-semibold text-md mb-2">Tools & Platforms</h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">Git</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">Docker</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">CI/CD</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">AWS</span>
-                            <span class="bg-gray-200 dark:bg-gray-800 text-sm font-medium px-3 py-1 rounded-full">Apache Spark</span>
+                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">Python</span>
+                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">PyTorch</span>
+                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">Hugging Face</span>
+                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">Scikit-learn</span>
+                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">SQL</span>
+                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">Docker</span>
+                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">AWS</span>
                         </div>
                     </div>
                 </div>
@@ -179,29 +226,60 @@
             
             <!-- Publications Section -->
             <section>
-                <h2 class="text-2xl font-bold border-b-2 border-gray-300 dark:border-gray-700 pb-2 mb-6">Key Publications & Open Source Projects</h2>
-                <p class="mb-6 text-gray-700 dark:text-gray-300">A full list of publications is available on my <a href="https://scholar.google.com/citations?user=OrRAiLoAAAAJ&hl=en" class="font-medium text-indigo-600 dark:text-indigo-400 hover:underline" target="_blank" rel="noopener noreferrer">Google Scholar profile</a>.</p>
-                <div class="space-y-4 text-gray-700 dark:text-gray-300">
-                    <p><strong class="font-semibold">Maintainability and Scalability In Machine Learning: Challenges and Solutions</strong> | <em class="text-gray-600 dark:text-gray-400">ACM Computing Surveys, 2025</em></p>
-                    <p><strong class="font-semibold">PyExamine: A Comprehensive, Un-Opinionated Smell Detection Tool for Python</strong> | <em class="text-gray-600 dark:text-gray-400">MSR 2025</em> <a href="https://github.com/KarthikShivasankar/python_smells_detector" class="ml-2 text-indigo-600 dark:text-indigo-400 font-medium" target="_blank" rel="noopener noreferrer">[GitHub]</a></p>
-                    <p><strong class="font-semibold">MLScent: A tool for Anti-pattern detection in ML projects</strong> | <em class="text-gray-600 dark:text-gray-400">CAIN 2025</em> <a href="https://github.com/KarthikShivasankar/ml_smells_detector" class="ml-2 text-indigo-600 dark:text-indigo-400 font-medium" target="_blank" rel="noopener noreferrer">[GitHub]</a></p>
-                    <p><strong class="font-semibold">BEACon-TD: Classifying Technical Debt and its types across diverse software projects issues using transformers</strong> | <em class="text-gray-600 dark:text-gray-400">Journal of Systems and Software, 2025</em></p>
-                    <p><strong class="font-semibold">Better Python Programming for all: With the focus on Maintainability</strong> | <a href="https://arxiv.org/abs/2408.09134" class="ml-2 text-indigo-600 dark:text-indigo-400 font-medium" target="_blank" rel="noopener noreferrer">[Arxiv]</a></p>
-                    <p><strong class="font-semibold">TD-Suite: All Batteries Included Framework for Technical Debt Classification</strong> | <a href="https://github.com/KarthikShivasankar/text_classification" class="ml-2 text-indigo-600 dark:text-indigo-400 font-medium" target="_blank" rel="noopener noreferrer">[GitHub]</a></p>
-                </div>
-                <h3 class="text-xl font-semibold mt-8 mb-4 border-t-2 border-gray-300 dark:border-gray-700 pt-6">Datasets & Models</h3>
-                <div class="text-gray-700 dark:text-gray-300">
-                     <p>Explore trained models and datasets on my <a href="httpshttps://huggingface.co/karths" class="font-medium text-indigo-600 dark:text-indigo-400 hover:underline" target="_blank" rel="noopener noreferrer">Hugging Face Profile</a>.</p>
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-8">Selected Publications</h2>
+                <div class="space-y-6">
+                    <div class="group">
+                        <a href="https://scholar.google.com/citations?user=OrRAiLoAAAAJ&hl=en" target="_blank" class="block p-4 -mx-4 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                                Maintainability and Scalability In Machine Learning: Challenges and Solutions
+                            </h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                K. Shivashankar, G. S. Al Hajj, & A. Martini • <span class="italic text-gray-700 dark:text-gray-300">ACM Computing Surveys, 2025</span>
+                            </p>
+                        </a>
+                    </div>
+                    
+                    <div class="group">
+                        <a href="https://github.com/KarthikShivasankar/python_smells_detector" target="_blank" class="block p-4 -mx-4 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                                PyExamine: A Comprehensive, Un-Opinionated Smell Detection Tool for Python
+                            </h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                K. Shivashankar & A. Martini • <span class="italic text-gray-700 dark:text-gray-300">Proceedings of MSR, 2025</span>
+                            </p>
+                        </a>
+                    </div>
+
+                    <div class="group">
+                        <a href="https://github.com/KarthikShivasankar/ml_smells_detector" target="_blank" class="block p-4 -mx-4 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                                MLScent: A tool for Anti-pattern detection in ML projects
+                            </h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                K. Shivashankar & A. Martini • <span class="italic text-gray-700 dark:text-gray-300">Proceedings of CAIN, 2025</span>
+                            </p>
+                        </a>
+                    </div>
+
+                     <div class="group">
+                        <div class="block p-4 -mx-4 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm">
+                            <h3 class="text-lg font-bold text-gray-900 dark:text-white">
+                                BEACon-TD: Classifying Technical Debt using transformers
+                            </h3>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
+                                K. Shivashankar, M. Orucevic, et al. • <span class="italic text-gray-700 dark:text-gray-300">Journal of Systems and Software, 2025</span>
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
         
         <!-- Footer -->
-        <footer class="text-center mt-16 pt-8 border-t border-gray-300 dark:border-gray-700">
-            <p class="text-sm text-gray-500 dark:text-gray-400">&copy; 2025 Karthik Shivashankar. All Rights Reserved.</p>
+        <footer class="text-center mt-24 pt-8 border-t border-gray-200 dark:border-gray-800">
+            <p class="text-sm text-gray-500 dark:text-gray-400">© 2025 Karthik Shivashankar</p>
         </footer>
 
     </div>
 </body>
 </html>
-
