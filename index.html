@@ -1,285 +1,618 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karthik Shivashankar - AI Researcher</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- FontAwesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-        /* Smooth theme transition */
-        body, .bg-gray-100, .bg-gray-900, .bg-gray-200, .bg-gray-800, .text-gray-900, .text-gray-100, .text-gray-600, .text-gray-300, .border-gray-300, .border-gray-700 {
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-        }
-    </style>
-    <script>
-        // Set theme based on localStorage or system preference
-        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark')
-        } else {
-          document.documentElement.classList.remove('dark')
-        }
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Karthik Shivashankar — Research Scientist, Generative AI & Software Engineering</title>
+<meta name="description" content="Karthik Shivashankar — Research Scientist working at the intersection of Generative AI, Agentic Engineering, and Software Quality." />
 
-        // Theme toggle function
-        function toggleTheme() {
-          if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.theme = 'light';
-          } else {
-            document.documentElement.classList.add('dark');
-            localStorage.theme = 'dark';
-          }
-        }
-    </script>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,400..600&family=IBM+Plex+Mono:wght@400;500;600&family=Spline+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+  :root {
+    --paper:        #F2EDE3;
+    --paper-2:      #EAE3D5;
+    --ink:          #15140F;
+    --ink-soft:     #4A463C;
+    --ink-faint:    #807A6B;
+    --line:         #D6CDBB;
+    --accent:       #C2410C;   /* sienna / signal orange */
+    --accent-soft:  #E9542711;
+    --card:         #FBF8F1;
+    --shadow:       0 1px 0 rgba(21,20,15,.04), 0 18px 40px -28px rgba(21,20,15,.45);
+  }
+  html.dark {
+    --paper:        #100F0D;
+    --paper-2:      #16140F;
+    --ink:          #F2EDE1;
+    --ink-soft:     #C2BBAB;
+    --ink-faint:    #837C6C;
+    --line:         #2A271F;
+    --accent:       #F97316;
+    --accent-soft:  #F9731614;
+    --card:         #1A1813;
+    --shadow:       0 1px 0 rgba(0,0,0,.3), 0 28px 60px -34px rgba(0,0,0,.8);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Spline Sans', sans-serif;
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .4s ease, color .4s ease;
+    overflow-x: hidden;
+  }
+
+  /* paper grain */
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none; z-index: 9999;
+    opacity: .035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: multiply;
+  }
+  html.dark body::before { mix-blend-mode: screen; opacity: .05; }
+
+  ::selection { background: var(--accent); color: var(--paper); }
+
+  a { color: inherit; text-decoration: none; }
+
+  .mono { font-family: 'IBM Plex Mono', monospace; }
+  .serif { font-family: 'Fraunces', serif; }
+
+  .wrap {
+    max-width: 940px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ── ruled margin line down the left, like a notebook ── */
+  .sheet { position: relative; }
+
+  /* ── theme toggle ── */
+  .toggle {
+    position: fixed; top: 22px; right: 22px; z-index: 1000;
+    width: 44px; height: 44px; border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--card); color: var(--ink);
+    cursor: pointer; display: grid; place-items: center;
+    box-shadow: var(--shadow);
+    transition: transform .25s ease, background-color .4s ease, border-color .4s ease;
+  }
+  .toggle:hover { transform: rotate(-18deg) scale(1.06); }
+  .toggle .fa-sun { display: none; }
+  html.dark .toggle .fa-sun { display: block; }
+  html.dark .toggle .fa-moon { display: none; }
+
+  /* ── HERO ── */
+  header.hero { padding: 92px 0 56px; }
+
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px; letter-spacing: .22em; text-transform: uppercase;
+    color: var(--accent); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 26px;
+  }
+  .eyebrow::after { content:""; height:1px; flex:1; background: var(--line); }
+
+  h1.name {
+    font-family: 'Fraunces', serif;
+    font-weight: 400;
+    font-size: clamp(1.9rem, 4vw, 2.9rem);
+    line-height: 1.02;
+    letter-spacing: -.01em;
+    margin: 0 0 22px;
+  }
+  h1.name em { font-style: italic; color: var(--accent); }
+
+  .lede {
+    font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+    color: var(--ink-soft);
+    max-width: 640px;
+    line-height: 1.5;
+    margin: 0 0 36px;
+  }
+  .lede b { color: var(--ink); font-weight: 600; }
+
+  .meta-row {
+    display: flex; flex-wrap: wrap; gap: 10px 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px; color: var(--ink-faint);
+    margin-bottom: 38px;
+  }
+  .meta-row .dot { color: var(--accent); }
+
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .links a {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    display: inline-flex; align-items: center; gap: 9px;
+    padding: 9px 15px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--ink-soft);
+    background: var(--card);
+    transition: all .2s ease;
+  }
+  .links a:hover {
+    color: var(--paper); background: var(--accent); border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .links a i, .links a .emoji { font-size: 14px; }
+
+  /* ── SECTION HEADINGS (numbered, journal style) ── */
+  section { padding: 30px 0; }
+  .sec-head {
+    display: flex; align-items: baseline; gap: 16px;
+    border-top: 1.5px solid var(--ink);
+    padding-top: 16px; margin-bottom: 40px;
+  }
+  .sec-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px; color: var(--accent); letter-spacing: .1em;
+  }
+  .sec-title {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: clamp(1.5rem, 3.2vw, 2.1rem);
+    letter-spacing: -.01em; margin: 0;
+  }
+  .sec-aside {
+    margin-left: auto;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px; color: var(--ink-faint);
+  }
+
+  /* ── TIMELINE (education + experience) ── */
+  .entry {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 24px;
+    padding: 22px 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .entry:last-child { border-bottom: none; }
+  .entry .when {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px; color: var(--ink-faint); padding-top: 5px;
+  }
+  .entry .when .tag {
+    display: inline-block; margin-top: 8px;
+    font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid var(--accent);
+    border-radius: 4px; padding: 2px 7px;
+  }
+  .entry h3 {
+    font-family: 'Fraunces', serif;
+    font-weight: 500; font-size: 1.32rem; margin: 0 0 4px; line-height: 1.2;
+  }
+  .entry .org { color: var(--accent); font-weight: 500; font-size: .95rem; margin-bottom: 10px; }
+  .entry p { margin: 0 0 8px; color: var(--ink-soft); font-size: .97rem; }
+  .entry .detail { color: var(--ink-faint); font-size: .9rem; }
+  .entry ul { margin: 8px 0 0; padding: 0; list-style: none; }
+  .entry li { position: relative; padding-left: 20px; margin-bottom: 9px; color: var(--ink-soft); font-size: .95rem; }
+  .entry li::before {
+    content: "›"; position: absolute; left: 2px; top: -1px;
+    color: var(--accent); font-family: 'IBM Plex Mono', monospace; font-weight: 600;
+  }
+  .entry li b { color: var(--ink); font-weight: 600; }
+
+  /* ── INTERESTS / SKILLS as inline keyword stream ── */
+  .stream { display: flex; flex-wrap: wrap; gap: 9px; }
+  .chip {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12.5px;
+    padding: 7px 13px; border-radius: 6px;
+    border: 1px solid var(--line); background: var(--card);
+    color: var(--ink-soft);
+    transition: all .18s ease; cursor: default;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+  .chip.key { background: var(--accent-soft); border-color: transparent; color: var(--accent); }
+
+  .twocol { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; }
+  .twocol h4 {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    letter-spacing: .16em; text-transform: uppercase; color: var(--ink-faint);
+    margin: 0 0 16px; display: flex; align-items: center; gap: 8px;
+  }
+  .twocol h4 i { color: var(--accent); }
+
+  /* ── PUBLICATIONS (reference list) ── */
+  .pub {
+    display: grid; grid-template-columns: 56px 1fr; gap: 18px;
+    padding: 18px 14px; margin: 0 -14px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all .2s ease;
+  }
+  .pub:hover { background: var(--card); border-color: var(--line); box-shadow: var(--shadow); }
+  .pub .yr {
+    font-family: 'IBM Plex Mono', monospace; font-size: 13px;
+    color: var(--accent); padding-top: 3px;
+  }
+  .pub h3 {
+    font-family: 'Fraunces', serif; font-weight: 500;
+    font-size: 1.16rem; line-height: 1.3; margin: 0 0 5px;
+    transition: color .2s ease;
+  }
+  .pub:hover h3 { color: var(--accent); }
+  .pub .venue { font-size: .88rem; color: var(--ink-faint); font-family: 'IBM Plex Mono', monospace; }
+  .pub .venue em { font-style: italic; color: var(--ink-soft); }
+  .pub .arrow { opacity: 0; margin-left: 6px; transition: opacity .2s ease, transform .2s ease; color: var(--accent); }
+  .pub:hover .arrow { opacity: 1; transform: translateX(3px); }
+
+  /* ── PROJECTS ── */
+  .proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .proj {
+    border: 1px solid var(--line); border-radius: 12px;
+    padding: 22px 20px; background: var(--card);
+    transition: all .22s ease; position: relative; overflow: hidden;
+  }
+  .proj::after {
+    content:""; position:absolute; left:0; top:0; height:100%; width:3px;
+    background: var(--accent); transform: scaleY(0); transform-origin: top;
+    transition: transform .25s ease;
+  }
+  .proj:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+  .proj:hover::after { transform: scaleY(1); }
+  .proj .tool { font-family:'IBM Plex Mono',monospace; font-size: 11px; letter-spacing:.12em; text-transform:uppercase; color: var(--accent); margin-bottom: 10px; }
+  .proj h3 { font-family:'Fraunces',serif; font-weight:500; font-size:1.18rem; margin:0 0 8px; }
+  .proj p { margin:0; font-size:.9rem; color: var(--ink-soft); line-height:1.5; }
+  .proj .gh { margin-top:14px; font-family:'IBM Plex Mono',monospace; font-size:12px; color: var(--ink-faint); display:flex; align-items:center; gap:7px; }
+  .proj:hover .gh { color: var(--accent); }
+
+  footer {
+    margin-top: 70px; padding: 34px 0 60px;
+    border-top: 1.5px solid var(--ink);
+    display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12.5px; color: var(--ink-faint);
+  }
+  footer a:hover { color: var(--accent); }
+
+  /* ── entrance animation ── */
+  .reveal { opacity: 0; transform: translateY(22px); }
+  .reveal.in { animation: rise .8s cubic-bezier(.2,.7,.2,1) forwards; }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+
+  @media (max-width: 760px) {
+    body { font-size: 16px; }
+    header.hero { padding: 76px 0 40px; }
+    .entry { grid-template-columns: 1fr; gap: 8px; }
+    .entry .when { padding-top: 0; }
+    .twocol { grid-template-columns: 1fr; gap: 28px; }
+    .proj-grid { grid-template-columns: 1fr; }
+    .sec-aside { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('theme');
+      if (t !== 'light') {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) { document.documentElement.classList.add('dark'); }
+  })();
+  function toggleTheme() {
+    var d = document.documentElement.classList.toggle('dark');
+    try { localStorage.setItem('theme', d ? 'dark' : 'light'); } catch (e) {}
+  }
+</script>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 antialiased selection:bg-indigo-500 selection:text-white">
 
-    <!-- Theme Toggle Button -->
-    <button onclick="toggleTheme()" class="fixed top-6 right-6 z-50 p-2.5 rounded-full bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-200 shadow-lg focus:outline-none hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors">
-        <svg id="theme-icon-light" class="h-5 w-5 hidden dark:block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
-        </svg>
-        <svg id="theme-icon-dark" class="h-5 w-5 block dark:hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-        </svg>
-    </button>
+<body>
+  <button class="toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+    <i class="fa-solid fa-moon"></i>
+    <i class="fa-solid fa-sun"></i>
+  </button>
 
-    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        
-        <!-- Header Section -->
-        <header class="text-center mb-16">
-            <h1 class="text-4xl sm:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-4">Karthik Shivashankar</h1>
-            <p class="text-xl text-indigo-600 dark:text-indigo-400 font-medium">AI and Software Engineering Researcher</p>
-            
-            <!-- Social Links -->
-            <div class="mt-8 flex flex-wrap justify-center gap-6">
-                <a href="mailto:karthik13sankar@outlook.com" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" aria-label="Email">
-                    <i class="fa-solid fa-envelope text-xl"></i>
-                    <span class="hidden sm:inline group-hover:underline">Email</span>
-                </a>
-                <a href="https://www.linkedin.com/in/karthiksankarprofile/" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                    <i class="fa-brands fa-linkedin text-xl"></i>
-                    <span class="hidden sm:inline group-hover:underline">LinkedIn</span>
-                </a>
-                <a href="https://github.com/KarthikShivasankar" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                    <i class="fa-brands fa-github text-xl"></i>
-                    <span class="hidden sm:inline group-hover:underline">GitHub</span>
-                </a>
-                <a href="https://scholar.google.com/citations?user=OrRAiLoAAAAJ&hl=en" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer" aria-label="Google Scholar">
-                    <i class="fa-solid fa-graduation-cap text-xl"></i>
-                    <span class="hidden sm:inline group-hover:underline">Scholar</span>
-                </a>
-                <a href="https://huggingface.co/karths" class="group flex items-center space-x-2 text-gray-600 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 transition" target="_blank" rel="noopener noreferrer" aria-label="Hugging Face">
-                    <span class="text-xl">🤗</span>
-                    <span class="hidden sm:inline group-hover:underline">Hugging Face</span>
-                </a>
-            </div>
-        </header>
+  <div class="wrap sheet">
 
-        <!-- Main Content -->
-        <main class="space-y-16">
-            
-            <!-- Summary Section -->
-            <section class="prose dark:prose-invert max-w-none">
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-5">Research Profile</h2>
-                <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed">
-                    I am an AI Researcher specializing in the convergence of <strong>Machine Learning (ML)</strong>, <strong>Natural Language Processing (NLP)</strong>, and <strong>Software Engineering (SE)</strong>. My doctoral research focuses on managing <strong>Technical Debt</strong> in modern software systems by leveraging <strong>Transformers</strong> and <strong>Large Language Models (LLMs)</strong>. I have designed and deployed agentic workflows and static analysis tools (BEACon-TD, MLScent) that automate the identification of code smells and architectural debt. My expertise spans the full lifecycle of AI engineering, from training specialized language models to developing scalable detection frameworks for ML-specific anti-patterns.
-                </p>
-            </section>
-            
-            <!-- Education Section -->
-            <section>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-8">Education</h2>
-                <div class="space-y-10">
-                    <div class="relative pl-8 border-l-2 border-indigo-200 dark:border-indigo-900">
-                        <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-gray-900"></div>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">Philosophiae Doctor (PhD) in Computer Science</h3>
-                        <div class="flex flex-col sm:flex-row sm:items-center text-sm text-gray-500 dark:text-gray-400 mt-1 mb-3">
-                            <span class="font-semibold text-indigo-600 dark:text-indigo-400">University of Oslo</span>
-                            <span class="hidden sm:block mx-2">•</span>
-                            <span>2021 – 2025</span>
-                        </div>
-                        <p class="text-gray-700 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">Thesis:</strong> The Dual Role of Machine Learning in Technical Debt Management.</p>
-                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Developed specialized BERT-based models for classifying technical debt and created a taxonomy of 76 ML-specific anti-patterns.</p>
-                    </div>
+    <!-- HERO -->
+    <header class="hero">
+      <div class="eyebrow reveal">Research Scientist in SINTEF Digital · Oslo</div>
+      <h1 class="name reveal">Karthik Shivashankar</h1>
+      <p class="lede reveal">
+        I work at the intersection of <b>Generative AI</b>, <b>Agentic Engineering</b>,
+        and <b>Software Quality</b>.
+      </p>
 
-                    <div class="relative pl-8 border-l-2 border-indigo-200 dark:border-indigo-900">
-                        <div class="absolute -left-[9px] top-0 h-4 w-4 rounded-full bg-indigo-500 ring-4 ring-white dark:ring-gray-900"></div>
-                        <h3 class="text-xl font-bold text-gray-900 dark:text-white">MSc in Electronics Engineering (Distinction)</h3>
-                        <div class="flex flex-col sm:flex-row sm:items-center text-sm text-gray-500 dark:text-gray-400 mt-1 mb-3">
-                            <span class="font-semibold text-indigo-600 dark:text-indigo-400">University of Surrey</span>
-                            <span class="hidden sm:block mx-2">•</span>
-                            <span>2017 – 2019</span>
-                        </div>
-                        <p class="text-gray-700 dark:text-gray-300"><strong class="text-gray-900 dark:text-white">Dissertation:</strong> Deep Learning for 4D Video.</p>
-                        <p class="mt-2 text-gray-600 dark:text-gray-400 text-sm">Developed compact representations of 4D video sequences using 3D Variational Autoencoders (VAEs) for Mixed Reality rendering.</p>
-                    </div>
-                </div>
-            </section>
+      <div class="meta-row reveal">
+        <span><span class="dot">●</span>SINTEF Digital</span>
+        <span><span class="dot">●</span> PhD, University of Oslo</span>
+      </div>
 
-            <!-- Research Experience Section -->
-            <section>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-8">Research & Technical Experience</h2>
-                <div class="space-y-12">
-                    <!-- PhD Role -->
-                    <div>
-                        <div class="flex justify-between items-baseline flex-wrap mb-2">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">PhD Researcher (AI & Software Engineering)</h3>
-                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">2021 – 2025</span>
-                        </div>
-                        <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-4">University of Oslo</p>
-                        <ul class="space-y-4 text-gray-700 dark:text-gray-300">
-                            <li class="flex items-start">
-                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
-                                <span><strong class="text-gray-900 dark:text-white">Transformer-Based Debt Classification:</strong> Engineered <strong>BEACon-TD</strong>, a novel framework utilizing fine-tuned transformer models to classify 13 distinct types of technical debt from issue trackers.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
-                                <span><strong class="text-gray-900 dark:text-white">Agentic AI for Refactoring:</strong> Investigated Agentic AI workflows using fine-tuned LLMs to proactively identify and refactor Python code, demonstrating measurable improvements in Halstead metrics.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
-                                <span><strong class="text-gray-900 dark:text-white">ML Static Analysis:</strong> Architected <strong>MLScent</strong>, a static analysis tool designed to detect 76 unique ML-specific anti-patterns in frameworks like TensorFlow and PyTorch.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
-                                <span><strong class="text-gray-900 dark:text-white">Python Quality Assurance:</strong> Developed <strong>PyExamine</strong>, a multi-level static analysis tool identifying 49 metrics for code and architectural smells, achieving 91% recall.</span>
-                            </li>
-                        </ul>
-                    </div>
+      <nav class="links reveal">
+        <a href="mailto:karthik13sankar@outlook.com"><i class="fa-solid fa-envelope"></i> Email</a>
+        <a href="https://www.linkedin.com/in/karthiksankarprofile/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin-in"></i> LinkedIn</a>
+        <a href="https://github.com/KarthikShivasankar" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://scholar.google.com/citations?user=OrRAiLoAAAAJ&hl=en" target="_blank" rel="noopener"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+        <a href="https://orcid.org/0009-0001-8508-2978" target="_blank" rel="noopener"><i class="fa-brands fa-orcid"></i> ORCID</a>
+        <a href="https://huggingface.co/karths" target="_blank" rel="noopener"><span class="emoji">🤗</span> Hugging Face</a>
+      </nav>
+    </header>
 
-                    <!-- Industry Role -->
-                    <div>
-                        <div class="flex justify-between items-baseline flex-wrap mb-2">
-                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">AI Engineer</h3>
-                            <span class="text-sm font-medium text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-800 px-3 py-1 rounded-full">2018 – 2021</span>
-                        </div>
-                        <p class="text-indigo-600 dark:text-indigo-400 font-medium mb-4">Fantastec Sports Technologies</p>
-                        <ul class="space-y-4 text-gray-700 dark:text-gray-300">
-                            <li class="flex items-start">
-                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
-                                <span>Architected a computer vision pipeline using Python, OpenCV, and Dlib that automated digital asset creation, significantly reducing manual production overhead.</span>
-                            </li>
-                            <li class="flex items-start">
-                                <span class="mr-3 mt-1.5 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-indigo-500"></span>
-                                <span>Constructed scalable data pipelines on AWS and Databricks using Apache Spark to analyze user behavior for predictive asset recommendation.</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+    <!-- 01 PROFILE / FOCUS -->
+    <section id="focus">
+      <div class="sec-head reveal">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title">Research focus</h2>
+        <span class="sec-aside">// what I study</span>
+      </div>
+      <div class="stream reveal">
+        <span class="chip key">Generative AI</span>
+        <span class="chip key">Agentic Engineering</span>
+        <span class="chip key">LLMs</span>
+        <span class="chip">Transformer models</span>
+        <span class="chip">Technical debt classification</span>
+        <span class="chip">ML maintainability &amp; scalability</span>
+        <span class="chip">Software quality</span>
+        <span class="chip">Code smells &amp; anti-patterns</span>
+        <span class="chip">Static analysis</span>
+        <span class="chip">Issue-tracker analytics</span>
+        <span class="chip">Task prioritisation</span>
+        <span class="chip">Natural language processing</span>
+        <span class="chip">Deep learning</span>
+        <span class="chip">Open-source tooling</span>
+      </div>
+    </section>
 
-            <!-- Technical Skills Section -->
-            <section>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-8">Technical Skills</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
-                        <h3 class="font-bold text-lg mb-4 flex items-center text-gray-900 dark:text-white">
-                            <i class="fa-solid fa-brain text-indigo-500 mr-2"></i> Core AI & ML
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">LLMs</span>
-                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">Agentic AI</span>
-                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">NLP</span>
-                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">Transformers</span>
-                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">Computer Vision</span>
-                            <span class="px-3 py-1 text-sm bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 rounded-full">Deep Learning</span>
-                        </div>
-                    </div>
-                    
-                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
-                        <h3 class="font-bold text-lg mb-4 flex items-center text-gray-900 dark:text-white">
-                            <i class="fa-solid fa-code text-indigo-500 mr-2"></i> Software Engineering
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">Static Analysis</span>
-                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">Technical Debt</span>
-                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">Code Smells</span>
-                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">MLOps</span>
-                            <span class="px-3 py-1 text-sm bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-full">CI/CD</span>
-                        </div>
-                    </div>
+    <!-- 02 EXPERIENCE -->
+    <section id="experience">
+      <div class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title">Experience</h2>
+        <span class="sec-aside">// where I build</span>
+      </div>
 
-                    <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm border border-gray-100 dark:border-gray-700">
-                        <h3 class="font-bold text-lg mb-4 flex items-center text-gray-900 dark:text-white">
-                            <i class="fa-solid fa-laptop-code text-indigo-500 mr-2"></i> Stack
-                        </h3>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">Python</span>
-                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">PyTorch</span>
-                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">Hugging Face</span>
-                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">Scikit-learn</span>
-                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">SQL</span>
-                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">Docker</span>
-                            <span class="px-3 py-1 text-sm bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-md">AWS</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Publications Section -->
-            <section>
-                <h2 class="text-2xl font-bold text-gray-900 dark:text-white border-b-2 border-gray-200 dark:border-gray-700 pb-3 mb-8">Selected Publications</h2>
-                <div class="space-y-6">
-                    <div class="group">
-                        <a href="https://scholar.google.com/citations?user=OrRAiLoAAAAJ&hl=en" target="_blank" class="block p-4 -mx-4 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                                Maintainability and Scalability In Machine Learning: Challenges and Solutions
-                            </h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                K. Shivashankar, G. S. Al Hajj, & A. Martini • <span class="italic text-gray-700 dark:text-gray-300">ACM Computing Surveys, 2025</span>
-                            </p>
-                        </a>
-                    </div>
-                    
-                    <div class="group">
-                        <a href="https://github.com/KarthikShivasankar/python_smells_detector" target="_blank" class="block p-4 -mx-4 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                                PyExamine: A Comprehensive, Un-Opinionated Smell Detection Tool for Python
-                            </h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                K. Shivashankar & A. Martini • <span class="italic text-gray-700 dark:text-gray-300">Proceedings of MSR, 2025</span>
-                            </p>
-                        </a>
-                    </div>
+      <div class="entry reveal">
+        <div class="when">2025 — Present<br><span class="tag">Current</span></div>
+        <div>
+          <h3>Research Scientist</h3>
+          <div class="org">SINTEF Digital — Sustainable Communication Technologies</div>
+          <p>Applied research on generative and agentic AI for software engineering — translating
+             doctoral methods into tooling and frameworks for industry-scale software quality.</p>
+        </div>
+      </div>
 
-                    <div class="group">
-                        <a href="https://github.com/KarthikShivasankar/ml_smells_detector" target="_blank" class="block p-4 -mx-4 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                                MLScent: A tool for Anti-pattern detection in ML projects
-                            </h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                K. Shivashankar & A. Martini • <span class="italic text-gray-700 dark:text-gray-300">Proceedings of CAIN, 2025</span>
-                            </p>
-                        </a>
-                    </div>
+      <div class="entry reveal">
+        <div class="when">2021 — 2025</div>
+        <div>
+          <h3>PhD Researcher — AI &amp; Software Engineering</h3>
+          <div class="org">University of Oslo, Department of Informatics</div>
+          <p class="detail"><b style="color:var(--ink)">Thesis:</b> The Dual Role of Machine Learning in Technical Debt Management.</p>
+          <ul>
+            <li><b>BEACon-TD</b> — fine-tuned transformer framework classifying 13 distinct types of technical debt from issue trackers.</li>
+            <li><b>Agentic refactoring</b> — LLM-driven workflows that proactively refactor Python, with measurable gains in Halstead metrics.</li>
+            <li><b>MLScent</b> — static analysis detecting 76 ML-specific anti-patterns across TensorFlow and PyTorch.</li>
+            <li><b>PyExamine</b> — multi-level smell detection across 49 metrics, reaching 91% recall.</li>
+          </ul>
+        </div>
+      </div>
 
-                     <div class="group">
-                        <div class="block p-4 -mx-4 rounded-lg hover:bg-white dark:hover:bg-gray-800 transition-colors border border-transparent hover:border-gray-200 dark:hover:border-gray-700 hover:shadow-sm">
-                            <h3 class="text-lg font-bold text-gray-900 dark:text-white">
-                                BEACon-TD: Classifying Technical Debt using transformers
-                            </h3>
-                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">
-                                K. Shivashankar, M. Orucevic, et al. • <span class="italic text-gray-700 dark:text-gray-300">Journal of Systems and Software, 2025</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-        
-        <!-- Footer -->
-        <footer class="text-center mt-24 pt-8 border-t border-gray-200 dark:border-gray-800">
-            <p class="text-sm text-gray-500 dark:text-gray-400">© 2025 Karthik Shivashankar</p>
-        </footer>
+      <div class="entry reveal">
+        <div class="when">2018 — 2021</div>
+        <div>
+          <h3>AI Engineer</h3>
+          <div class="org">Fantastec Sports Technologies</div>
+          <ul>
+            <li>Built a computer-vision pipeline (Python · OpenCV · Dlib) automating digital-asset creation and cutting manual overhead.</li>
+            <li>Constructed scalable data pipelines on AWS &amp; Databricks with Apache Spark for predictive asset recommendation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-    </div>
+    <!-- 03 EDUCATION -->
+    <section id="education">
+      <div class="sec-head reveal">
+        <span class="sec-num">03</span>
+        <h2 class="sec-title">Education</h2>
+        <span class="sec-aside">// where I learned</span>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">2021 — 2025</div>
+        <div>
+          <h3>PhD in Computer Science</h3>
+          <div class="org">University of Oslo · Department of Informatics</div>
+          <p class="detail">Developed specialised BERT-based models for classifying technical debt and a taxonomy of 76 ML-specific anti-patterns.</p>
+        </div>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">2017 — 2019</div>
+        <div>
+          <h3>MSc Electronics Engineering — Distinction</h3>
+          <div class="org">University of Surrey</div>
+          <p class="detail"><b style="color:var(--ink)">Dissertation:</b> Deep Learning for 4D Video — compact 4D sequence representations via 3D Variational Autoencoders for Mixed-Reality rendering.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 04 SKILLS -->
+    <section id="skills">
+      <div class="sec-head reveal">
+        <span class="sec-num">04</span>
+        <h2 class="sec-title">Technical toolkit</h2>
+        <span class="sec-aside">// how I build</span>
+      </div>
+      <div class="twocol">
+        <div class="reveal">
+          <h4><i class="fa-solid fa-brain"></i> Methods</h4>
+          <div class="stream">
+            <span class="chip">LLMs</span><span class="chip">Agentic AI</span><span class="chip">Transformers</span>
+            <span class="chip">NLP</span><span class="chip">Computer Vision</span><span class="chip">Deep Learning</span>
+            <span class="chip">Static Analysis</span><span class="chip">Technical Debt</span><span class="chip">Code Smells</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <h4><i class="fa-solid fa-terminal"></i> Stack</h4>
+          <div class="stream">
+            <span class="chip">Python</span><span class="chip">PyTorch</span><span class="chip">Hugging Face</span>
+            <span class="chip">Scikit-learn</span><span class="chip">SQL</span><span class="chip">Docker</span>
+            <span class="chip">AWS</span><span class="chip">Spark</span><span class="chip">MLOps · CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 PUBLICATIONS -->
+    <section id="publications">
+      <div class="sec-head reveal">
+        <span class="sec-num">05</span>
+        <h2 class="sec-title">Selected publications</h2>
+        <span class="sec-aside">// full list on Scholar →</span>
+      </div>
+
+      <a class="pub reveal" href="https://github.com/KarthikShivasankar/text_classification" target="_blank" rel="noopener">
+        <div class="yr">2026</div>
+        <div>
+          <h3>TD-Suite: An All-Batteries-Included Framework for Technical Debt Classification<i class="fa-solid fa-arrow-up-right-from-square arrow"></i></h3>
+          <div class="venue">K. Shivashankar &amp; A. Martini · <em>Preprint / framework release</em></div>
+        </div>
+      </a>
+
+      <div class="pub reveal">
+        <div class="yr">2025</div>
+        <div>
+          <h3>Maintainability &amp; Scalability in Machine Learning: Challenges and Solutions</h3>
+          <div class="venue">K. Shivashankar, G. S. Al Hajj &amp; A. Martini · <em>ACM Computing Surveys</em></div>
+        </div>
+      </div>
+
+      <a class="pub reveal" href="https://github.com/KarthikShivasankar/python_smells_detector" target="_blank" rel="noopener">
+        <div class="yr">2025</div>
+        <div>
+          <h3>PyExamine: A Comprehensive, Un-Opinionated Smell Detection Tool for Python<i class="fa-solid fa-arrow-up-right-from-square arrow"></i></h3>
+          <div class="venue">K. Shivashankar &amp; A. Martini · <em>Proceedings of MSR</em></div>
+        </div>
+      </a>
+
+      <a class="pub reveal" href="https://github.com/KarthikShivasankar/ml_smells_detector" target="_blank" rel="noopener">
+        <div class="yr">2025</div>
+        <div>
+          <h3>MLScent: A Tool for Anti-Pattern Detection in ML Projects<i class="fa-solid fa-arrow-up-right-from-square arrow"></i></h3>
+          <div class="venue">K. Shivashankar &amp; A. Martini · <em>Proceedings of CAIN</em></div>
+        </div>
+      </a>
+
+      <div class="pub reveal">
+        <div class="yr">2025</div>
+        <div>
+          <h3>BEACon-TD: Classifying Technical Debt and its Types Across Diverse Projects using Transformers</h3>
+          <div class="venue">K. Shivashankar, M. Orucevic, M. M. Kruke &amp; A. Martini · <em>Journal of Systems and Software</em></div>
+        </div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="yr">2025</div>
+        <div>
+          <h3>Enhancing Python Code Maintainability through Large Language Model-Based Approaches</h3>
+          <div class="venue">K. Shivashankar &amp; A. Martini</div>
+        </div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="yr">2025</div>
+        <div>
+          <h3>Enhancing Task Prioritization in Software Development Issue-Tracking Systems</h3>
+          <div class="venue">K. Shivashankar, K. M. Haugerud &amp; A. Martini</div>
+        </div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="yr">2025</div>
+        <div>
+          <h3>QualiTagger: Automating Software-Quality Detection in Issue Trackers</h3>
+          <div class="venue">K. Shivashankar, R. Capilla, M. M. Kruke et al.</div>
+        </div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="yr">2023</div>
+        <div>
+          <h3>Technical Debt Classification in Issue Trackers using Transformer-Based NLP</h3>
+          <div class="venue">K. Shivashankar &amp; A. Martini</div>
+        </div>
+      </div>
+
+      <div class="pub reveal">
+        <div class="yr">2022</div>
+        <div>
+          <h3>Maintainability Challenges in ML: A Systematic Literature Review</h3>
+          <div class="venue">K. Shivashankar &amp; A. Martini</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 PROJECTS -->
+    <section id="projects">
+      <div class="sec-head reveal">
+        <span class="sec-num">06</span>
+        <h2 class="sec-title">Open-source</h2>
+        <span class="sec-aside">// ship it</span>
+      </div>
+      <div class="proj-grid">
+        <a class="proj reveal" href="https://github.com/KarthikShivasankar/text_classification" target="_blank" rel="noopener">
+          <div class="tool">Framework</div>
+          <h3>TD-Suite</h3>
+          <p>Transformer-based technical debt classification across 17 categories — batteries included.</p>
+          <div class="gh"><i class="fa-brands fa-github"></i> text_classification</div>
+        </a>
+        <a class="proj reveal" href="https://github.com/KarthikShivasankar/python_smells_detector" target="_blank" rel="noopener">
+          <div class="tool">Static Analysis</div>
+          <h3>PyExamine</h3>
+          <p>Comprehensive, un-opinionated code-smell detection for Python across 49 metrics.</p>
+          <div class="gh"><i class="fa-brands fa-github"></i> python_smells_detector</div>
+        </a>
+        <a class="proj reveal" href="https://github.com/KarthikShivasankar/ml_smells_detector" target="_blank" rel="noopener">
+          <div class="tool">ML Quality</div>
+          <h3>MLScent</h3>
+          <p>Detects 76 ML-specific anti-patterns across TensorFlow and PyTorch codebases.</p>
+          <div class="gh"><i class="fa-brands fa-github"></i> ml_smells_detector</div>
+        </a>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2025 Karthik Shivashankar</span>
+      <span>Oslo, Norway · <a href="mailto:karthik13sankar@outlook.com">karthik13sankar@outlook.com</a></span>
+    </footer>
+
+  </div>
+
+  <script>
+    // staggered reveal on load + on scroll
+    var items = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            var i = items.indexOf(e.target);
+            e.target.style.animationDelay = Math.min((i % 6) * 70, 350) + 'ms';
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+      items.forEach(function (el) { io.observe(el); });
+    } else {
+      items.forEach(function (el) { el.classList.add('in'); });
+    }
+  </script>
 </body>
 </html>
